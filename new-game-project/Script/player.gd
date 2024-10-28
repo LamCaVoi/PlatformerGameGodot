@@ -2,8 +2,8 @@ class_name Player
 extends CharacterBody2D
 
 @export var max_x_speed: float = 130
-@export var max_y_speed: float = 300
-@export var jump_height: float = 55
+@export var max_y_speed: float = 500
+@export var jump_height: float = 60
 @export var jump_time_to_peak:float = 0.4
 @export var jump_time_to_descent:float = 0.3
 @export var acceleration: float= 2400

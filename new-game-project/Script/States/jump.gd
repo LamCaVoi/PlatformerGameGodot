@@ -13,16 +13,19 @@ func handle_input(_event: InputEvent) -> void:
 func update(delta: float) -> void:
 	pass
 	
-func physics_update(delta: float) -> void:
-	var direction := Input.get_axis("move_left", "move_right")
-	player.run(direction)
-	player.apply_gravity(delta)
+func hang_boost():
 	if player.velocity.y > -player.hang_threshold and player.velocity.y < 0:
 		player.jump_gravity *= 0.95
 		player.max_x_speed += 10
 	else:
 		player.jump_gravity = start_gravity
 		player.max_x_speed = start_velocity
+
+func physics_update(delta: float) -> void:
+	var direction := Input.get_axis("move_left", "move_right")
+	player.run(direction)
+	player.apply_gravity(delta)
+	hang_boost()
 	player.velocity.x = lerp(prevVelocity.x, player.velocity.x, player.velocity_x_lerp_speed)
 	player.move_and_slide()
 	prevVelocity = player.velocity
