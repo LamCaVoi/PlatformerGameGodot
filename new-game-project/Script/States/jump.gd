@@ -9,6 +9,8 @@ func handle_input(_event: InputEvent) -> void:
 	if Input.is_action_just_released("jump") and player.velocity.y < -150:
 		player.velocity.y *= player.short_jump_cut
 		#player.velocity.y += 100
+	if Input.is_action_just_released("dash"):
+		finished.emit("Dash")
 
 func update(delta: float) -> void:
 	pass

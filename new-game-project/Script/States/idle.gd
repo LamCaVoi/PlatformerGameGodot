@@ -18,6 +18,9 @@ func switch_state():
 	#Jump
 	elif Input.is_action_just_pressed("jump"):
 		finished.emit("Jump")
+	#Dash
+	elif Input.is_action_just_pressed("dash"):
+		finished.emit("Dash")
 	#Run
 	else:
 		var direction = Input.get_axis("move_left", "move_right")

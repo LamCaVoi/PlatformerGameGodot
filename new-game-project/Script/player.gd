@@ -9,9 +9,12 @@ extends CharacterBody2D
 @export var acceleration: float= 2400
 @export var friction: float= 2400
 @export var short_jump_cut: float= 0.8
-@export var velocity_x_lerp_speed: float = 0.1
+@export var velocity_x_lerp_speed: float = 0.3
 @export var velocity_y_lerp_speed: float = 0.8
 @export var hang_threshold: float = 50.0
+@export var dash_speed: float = 300.0
+@export var dash_time: float = 0.2
+
 
 @export var coyote_time: float = 0.2
 @export var buffer_jump_time: float = 0.2

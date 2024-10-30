@@ -13,6 +13,8 @@ func handle_input(_event: InputEvent) -> void:
 			finished.emit("Jump")
 		else:
 			buffer_jump_timer = player.buffer_jump_time
+	elif Input.is_action_just_pressed("dash"):
+		finished.emit("Dash")
 
 func update(delta: float) -> void:
 	pass
