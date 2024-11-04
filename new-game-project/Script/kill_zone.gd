@@ -1,15 +1,7 @@
-extends Area2D
+extends Node2D
 
-@onready var timer: Timer = $Timer
+@onready var player: Player = $Player
 
-func _on_body_entered(body: Node2D) -> void:
-	print("You're death	")
-	Engine.time_scale = 0.5
-	timer.start()
-
-
-
-func _on_timer_timeout() -> void:
-	print("Timer ended!!!")
-	Engine.time_scale = 1
-	get_tree().reload_current_scene()
+func _on_area_2d_body_entered(body: Node2D) -> void:
+	player.setState("Die")
+	

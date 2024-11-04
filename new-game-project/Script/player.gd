@@ -25,6 +25,7 @@ extends CharacterBody2D
 @onready var jump_gravity:float =((-2.0 * jump_height) / (jump_time_to_peak * jump_time_to_peak)) * -1.0
 @onready var fall_gravity:float =((-2.0 * jump_height) / (jump_time_to_descent * jump_time_to_descent)) * -1.0
 
+
 var is_alive = true
 var can_dash = true
 
@@ -51,3 +52,12 @@ func run(direction):
 	#velocity.x = max_x_speed * direction
 	if not direction == 0:
 		animated_sprite.flip_h = direction < 0
+
+func setState(stateName: String) -> void:
+	state_machine._transition_to_next_state(stateName)
+	
+func setVelocityX(velocityX: int) ->void:
+	velocity.x = velocityX
+
+func setVelocityY(velocityY: int) ->void:
+	velocity.y = velocityY

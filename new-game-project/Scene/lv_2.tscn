@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://wmdmlqp0lxn4" path="res://Scene/player.tscn" id="1_72vnq"]
 [ext_resource type="Texture2D" uid="uid://c8hl7mitg2c54" path="res://brackeys_platformer_assets/sprites/world_tileset.png" id="2_u8ca1"]
-[ext_resource type="PackedScene" uid="uid://bx40ec1qc8msu" path="res://Scene/kill_zone.tscn" id="3_4u24w"]
+[ext_resource type="Script" path="res://Script/kill_zone.gd" id="3_gpt82"]
 [ext_resource type="PackedScene" uid="uid://d3jtaa5sqa50y" path="res://Scene/platforms.tscn" id="6_raaqu"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7gm66"]
@@ -171,7 +171,8 @@ texture = ExtResource("2_u8ca1")
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_7gm66")
 
-[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_gnaee"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_esh7y"]
+size = Vector2(41, 42)
 
 [node name="lv2" type="Node2D"]
 
@@ -198,13 +199,17 @@ zoom = Vector2(4, 4)
 limit_smoothed = true
 position_smoothing_enabled = true
 
-[node name="KillZone" parent="." instance=ExtResource("3_4u24w")]
+[node name="KillZone" type="Node2D" parent="."]
 position = Vector2(68, 91)
-collision_mask = 2
+script = ExtResource("3_gpt82")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="KillZone"]
-position = Vector2(-10, 5)
-shape = SubResource("WorldBoundaryShape2D_gnaee")
+[node name="Area2D" type="Area2D" parent="KillZone"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="KillZone/Area2D"]
+position = Vector2(35, -50)
+shape = SubResource("RectangleShape2D_esh7y")
+
+[node name="Player" parent="KillZone" instance=ExtResource("1_72vnq")]
 
 [node name="Platforms" parent="." instance=ExtResource("6_raaqu")]
 position = Vector2(20, 25)
@@ -226,3 +231,5 @@ position = Vector2(199, -34)
 
 [node name="Platforms4" parent="." instance=ExtResource("6_raaqu")]
 position = Vector2(276, -40)
+
+[connection signal="body_entered" from="KillZone/Area2D" to="KillZone" method="_on_area_2d_body_entered"]
