@@ -14,7 +14,6 @@ func physics_update(delta: float) -> void:
 	if dash_timer <=0:
 		finished.emit("Fall")
 		return
-	player.velocity = dir * player.dash_speed
 	print(player.velocity)
 	player.move_and_slide()
 
@@ -32,9 +31,11 @@ func get_dir() -> Vector2:
 	return dir
 
 func enter(previous_state_path: String, data := {}) -> void:
+	player.can_dash = false
 	dir = get_dir()
+	player.velocity = dir * player.dash_speed
 	dash_timer = player.dash_time
 
 
 func exit() -> void:
-	player.velocity = Vector2.ZERO
+	player.velocity = dir * 50

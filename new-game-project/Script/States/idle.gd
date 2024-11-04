@@ -2,6 +2,7 @@ extends PlayerState
 
 func handle_input(_event: InputEvent) -> void:
 	pass
+	
 
 func update(delta: float) -> void:
 	pass
@@ -26,10 +27,10 @@ func switch_state():
 		var direction = Input.get_axis("move_left", "move_right")
 		if direction != 0:
 			finished.emit("Run")
-	
 
 func enter(previous_state_path: String, data := {}) -> void:
-	player.velocity.x = 0.0
+	player.can_dash = true
+	player.velocity = Vector2.ZERO
 	player.animated_sprite.play("idle")
 
 func exit() -> void:

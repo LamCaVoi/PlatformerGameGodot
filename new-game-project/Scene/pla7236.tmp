@@ -232,6 +232,8 @@ height = 18.0
 collision_layer = 2
 script = ExtResource("1_4dk0b")
 max_y_speed = 250.0
+acceleration = 1200.0
+friction = 1200.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -12)
