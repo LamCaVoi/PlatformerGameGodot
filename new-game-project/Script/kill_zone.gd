@@ -1,7 +1,4 @@
-extends Node2D
+extends Area2D
 
-@onready var player: Player = $Player
-
-func _on_area_2d_body_entered(body: Node2D) -> void:
-	player.setState("Die")
-	
+func _on_body_entered(body: Node2D) -> void:
+	Events.emit_signal("player_entered_kill_zone")

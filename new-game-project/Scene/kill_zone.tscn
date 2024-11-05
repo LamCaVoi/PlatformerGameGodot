@@ -1,13 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://bx40ec1qc8msu"]
+[gd_scene load_steps=2 format=3 uid="uid://bx40ec1qc8msu"]
 
-[ext_resource type="Script" path="res://Script/kill_zone.gd" id="1_2cdld"]
-[ext_resource type="PackedScene" uid="uid://wmdmlqp0lxn4" path="res://Scene/player.tscn" id="2_omlob"]
+[ext_resource type="Script" path="res://Script/kill_zone.gd" id="1_uupro"]
 
-[node name="KillZone" type="Node2D"]
-script = ExtResource("1_2cdld")
+[node name="KillZone" type="Area2D"]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_uupro")
 
-[node name="Area2D" type="Area2D" parent="."]
-
-[node name="Player" parent="." instance=ExtResource("2_omlob")]
-
-[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

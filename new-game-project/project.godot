@@ -11,8 +11,12 @@ config_version=5
 [application]
 
 config/name="New Game Project"
-run/main_scene="res://Scene/lv_2.tscn"
+run/main_scene="res://Prototype/Scene/prototype.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
+
+[autoload]
+
+Events="*res://Script/Events.gd"
 
 [global_group]
 
